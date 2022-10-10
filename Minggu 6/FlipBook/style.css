@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-image: url("img/R.jpg");
+}
+/* Book */
+.book {
+  position: relative;
+  width: 500px;
+  height: 600px;
+  transition: transform 0.5s;
+}
+.paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+}
+
+.front,
+.back {
+  background-color: darkred;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.front {
+  z-index: 1;
+  backface-visibility: hidden;
+  border-left: 15px solid darkred;
+}
+#cover{
+  font-family: "Segoe Fluent Icons";
+  font-size: 30px;
+  text-align: center;
+  color: azure;
+}
+.back {
+  z-index: 0;
+  border-left: 15px solid darkred;
+}
+#f1{
+  border-left: 30px solid darkred;
+  background-image: url("img/b.jpg");
+}
+#b4{
+  border-right: 30px solid darkred;
+  background-image: url("img/b.jpg");
+}
+#b1,#f4,#f2,#b2,#f3,#b3{
+  background-image: url("img/c.jpg");
+}
+#img1{
+  padding-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+#img2{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 5px;
+  border: 5px dashed black;
+}
+#img3{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 5px;
+  border: 5px dashed black;
+}
+#img4{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  padding: 5px;
+  border: 5px dashed black;
+}
+#content{
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  padding: 15px;
+  border: 10px double black;
+}
+#content2{
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  padding: 15px;
+  border: 10px double black;
+  color: azure;
+}
+#c1{
+  font-family: Symbol;
+  font-size: 45px;
+  text-align: center;
+  color: azure;
+}
+h1{
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 35px;
+  text-align: center;
+}
+.front-content,
+.back-content {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  justify-content: center;
+}
+
+.back-content {
+  transform: rotateY(180deg)
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+  transform: rotateY(-180deg);
+}
+
+/* Controller Buttons */
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 85px;
+  transition: transform 0.5s;
+}
+button:focus {
+  outline: none;
+}
+button:hover i {
+  color: #636363;
+}
+i {
+  font-size: 50px;
+  color: black;
+}
+/* Paper stack order */
+#p1 {
+  z-index: 4;
+}
+
+#p2 {
+  z-index: 3;
+}
+
+#p3 {
+  z-index: 2;
+}
+
+#p4 {
+  z-index: 1;
+}

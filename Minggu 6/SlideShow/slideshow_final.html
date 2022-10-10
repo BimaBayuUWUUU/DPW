@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Belajar JavaScript </title>
+  <style>
+    body{
+      background-image: url("img/bacgroudnluar.jpg");
+     background-size: cover;
+    }
+  #slideshow-container{
+    background-image: url("img/backgrounddalam.jpg");
+    background-size: cover;
+    margin: 20px auto;
+    width: 800px;
+    height: 450px;
+    border-radius: 20px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 10px black;
+  }
+  button{
+      background-color: #FF0000;
+      background-image: none;
+      border: 1px solid #000;
+      border-radius: 4px;
+      box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0 5px 10px 0;
+      overflow: visible;
+      padding: 12px;
+      text-align: center;
+      text-transform: none;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+  nav{
+    width:600px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  #slideshow{
+    width: 300px;
+    height: 350px;
+    margin-top: 35px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 15px;
+    border-color: darkgoldenrod;
+    border-style: outset;
+    border-radius: 10px 10px 50% 50%;
+  }
+    h1{
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-size: 45px;
+      text-align: center;
+      background: linear-gradient(to right, #ffffff 20%, #FF0000 40%, #FF0000 60%, #ffffff 80%);
+      background-size: auto;
+    }
+    p{
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<h1>Presiden Indonesia Dari Masa Ke Masa</h1>
+<div id ="slideshow-container">
+  <a id="linkshow" href="https://www.presidenri.go.id/">
+    <img id ="slideshow" src="img/pancasila.jpg">
+  </a>
+</div>
+<p><b>Tekan Pada Slide Untuk Terhubung Dengan Wikipedia</b></p>
+<nav>
+  <button id ="prev"><< Prev</button>
+  <div>
+    <button id ="start">Start Slideshow</button>
+    <button id="stop">Stop Slideshow</button>
+  </div>
+  <button id ="next">Next >></button>
+</nav>
+<script>
+  let slideshowNode = document.getElementById("slideshow");
+  let linkshowNode = document.getElementById("linkshow");
+  let startshowNode = document.getElementById("start");
+  let stopshowNode = document.getElementById("stop");
+  let prevNode = document.getElementById("prev");
+  let nextNode = document.getElementById("next");
+  let arrayGambar=[
+     "img/pancasila.jpg","img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.png","img/7.jpg"
+   ];
+   let arrayLink=[
+     "https://www.presidenri.go.id/",
+     "https://id.wikipedia.org/wiki/Soekarno",
+     "https://id.wikipedia.org/wiki/Soeharto",
+     "https://id.wikipedia.org/wiki/B._J._Habibie",
+     "https://id.wikipedia.org/wiki/Abdurrahman_Wahid",
+     "https://id.wikipedia.org/wiki/Megawati_Soekarnoputri",
+     "https://id.wikipedia.org/wiki/Susilo_Bambang_Yudhoyono",
+     "https://id.wikipedia.org/wiki/Joko_Widodo"
+   ];
+   let counter = 0;
+   const nextSlideshow = () =>{
+     counter++;
+     if(counter ===8){
+       counter = 0;
+     }
+     slideshowNode.setAttribute("src",arrayGambar[counter])
+     linkshowNode.setAttribute("href",arrayLink[counter])
+   }
+  const prevSlideshow = () =>{
+    counter--;
+    if(counter ===-1){
+      counter = 7;
+    }
+    slideshowNode.setAttribute("src",arrayGambar[counter])
+    linkshowNode.setAttribute("href",arrayLink[counter])
+  }
+  prevNode.addEventListener("click",prevSlideshow)
+  nextNode.addEventListener("click",nextSlideshow)
+  let intervalID=0;
+   const startSlideshow =() => {
+     if (intervalID ===0){
+       intervalID=setInterval(nextSlideshow,2000);
+     }
+   }
+  const stopSlideshow = () => {
+     clearInterval(intervalID);
+     intervalID=0;
+  }
+  prevNode.addEventListener("click",prevSlideshow)
+  nextNode.addEventListener("click",nextSlideshow)
+  startshowNode.addEventListener("click",startSlideshow)
+  stopshowNode.addEventListener("click",stopSlideshow)
+</script>
+</body>
+</html>
